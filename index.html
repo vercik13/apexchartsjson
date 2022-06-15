@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://pemaairenergy.com/new1/saas/temp.php"></script>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto);
+
+        body {
+          font-family: Roboto, sans-serif;
+        }
+
+        #chart {
+          max-width: 650px;
+          margin: 35px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="chart">
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script>
+var options = {
+  chart: {
+      height: 350,
+      type: 'bar',
+  },
+  dataLabels: {
+      enabled: false
+  },
+  series: [],
+  title: {
+      text: 'Ajax Example',
+  }
+}
+
+var chart = new ApexCharts(
+  document.querySelector("#chart"),
+  options
+);
+
+chart.render();
+    </script>
+
+
+
+<script>
+
+fetch('https://pemaairenergy.com/new1/saas/temp.php?fbclid=IwAR0SweHAoa0omYrnUd5qiKyh2KARsZEPCj99N0gbWWnNCSCmlrTp_U4014w', {mode: 'no-cors'})
+  .then(response => response.json())
+  .then(data => {
+    console.log('data z jsonu')
+    console.log(data);
+  })
+
+
+
+</script>
+
+
+</body>
+</html>
