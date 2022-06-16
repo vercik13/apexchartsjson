@@ -15,12 +15,16 @@
         @import url(https://fonts.googleapis.com/css?family=Nunito);
 
         body {
-          font-family: Nunito, sans-serif;
+          font-family: 'Nunito', sans-serif;
         }
 
         #chart {
-          max-width: 650px;
-          margin: 35px auto;
+          max-width: 100%;
+          margin: 0 auto;
+        }
+
+        .card-body {
+          padding: 1rem 0 0 0;
         }
     </style>
 </head>
@@ -29,9 +33,9 @@
 <div class="row">
   
     <div class="col-xl-4 col-lg-6">
-      <div class="card">
+      <div class="card shadow-lg p-3 mb-5 bg-body rounded">
         <div class="card-body p=0" dir="ltr" style="position: relative">
-          <div id="chart" min-height="172px">
+          <div id="chart" max-height="100%">
             <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
             <script>
         var options = {
@@ -40,7 +44,9 @@
               type: 'area',
               zoom: {
                 enabled: true
-              }
+              },
+              zoomedArea: true
+              
           },
           dataLabels: {
               enabled: false
@@ -49,13 +55,7 @@
           title: {
               text: 'Data chart',
           },
-          dropShadow: {
-            enabled: true,
-            top: 0,
-            left: 0,
-            blur: 3,
-            opacity: 0.5
-          }
+
         }
 
         var chart = new ApexCharts(
@@ -79,7 +79,7 @@
             $.getJSON(url, function(response) {
               chart.updateSeries([{
                 name: 'amount',
-                data: response
+                data: response //response.reverse()
               }])
             });
 
